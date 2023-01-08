@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <img src="images/logo.svg">
+  </header>
+
+  <picture>
+
+    <source media="(max-width:375px)" srcset="images/hero-mobile.jpg" class="side-image">
+
+    <source media="(min-width:376px)" srcset="images/hero-desktop.jpg">
+
+    <img src="images/hero-mobile.jpg" alt="image of woman">
+
+  </picture>
+  <div class="call_to_action ">
+    <h1>
+      <span>WE'RE</span> <br />
+      COMING <br />
+      SOON
+    </h1>
+    <p>
+      Hello fellow shoppers! We're currently building<br /> our new fashion store. Add your email below to<br />
+      stay up-to-date with announcements and our<br />
+      launch deals.
+    </p>
+    <div class="email_section">
+      <input type="email" onkeyup="validateEm()" placeholder="Email Address" id="email_area" class="inputBox" required>
+      <span id="email_error"></span>
+      <button id="arrow-area">
+        <img src="images/icon-arrow.svg">
+      </button>
+    </div>
+  </div>
+
+
+  <script defer>
+
+    const emailError = document.getElementById("email_error")
+    const entButton = document.getElementById("arrow-area")
+    let inputBox = document.querySelector(".inputBox")
+
+
+    //function to validate 
+
+    function validateEm() {
+      // Why does emailInput variable need to be declared inside the fxn for validateEm() to run properly. Can anyone explain ?
+      const emailInput = document.getElementById("email_area").value
+      // Why use 3 ifs instead of if else?
+      if (emailInput.length == 0) {
+        emailError.innerHTML = "Email is required"
+        inputBox.style.borderColor = "hsl(0, 93%, 68%)"
+        entButton.style.bottom = "36%"
+        return false
+      }
+      if (!emailInput.match(/^([a-zA-Z0-9\.-])+@([a-zA-Z0-9\.])+.([a-z]{2,8})(.[a-z]{2,8}?)$/)) {
+        emailError.innerHTML = "Please provide a valid email"
+        inputBox.style.borderColor = "hsl(0, 93%, 68%)"
+        emailError.style.color = "red"
+        entButton.style.bottom = "36%"
+        return false
+      }
+      emailError.innerHTML = "Valid email"
+      inputBox.style.borderColor = "green"
+      emailError.style.color = "green"
+      entButton.style.bottom = "36%"
+      return true
+    }
+
+  </script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+</body>
+
+</html>
